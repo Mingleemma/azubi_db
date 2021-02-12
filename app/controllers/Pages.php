@@ -91,12 +91,13 @@ class Pages extends Controller{
         $this->view( 'pages/users', $data);
     }
 
-
-
     public function index(){
-        $this->view( 'pages/login');
+        new Guard();
+        new RoleGuard('Create Invoice');
+        $paymentstoday = Payments::listAllPaymentstoday();
+        $data = ['paymentstoday'=>$paymentstoday];
+        $this->view('pages/invoices', $data);
     }
-
 
     public function logout(){
         session_unset($_SESSION['userid']);

@@ -1,6 +1,5 @@
 .vscode
 .vs/
-vendor/
 public/vendor
 public/uploads
 app/uploads

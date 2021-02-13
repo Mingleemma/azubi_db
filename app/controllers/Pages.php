@@ -92,8 +92,6 @@ class Pages extends Controller{
     }
 
     public function index(){
-        new Guard();
-        new RoleGuard('Create Invoice');
         $paymentstoday = Payments::listAllPaymentstoday();
         $data = ['paymentstoday'=>$paymentstoday];
         $this->view('pages/invoices', $data);

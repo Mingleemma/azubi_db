@@ -9,7 +9,7 @@ class Invoicing extends PostController
 {
 
     public function index(){
-        new RoleGuard('Report');
+
         $from = date('Y-m-d', strtotime($_POST['from']));
         $to =   date('Y-m-d', strtotime($_POST['to']));;
 

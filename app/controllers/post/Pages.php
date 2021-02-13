@@ -3,30 +3,15 @@ class Pages extends PostController {
 
     public function index(){
 
-        if(isset($_POST['login'])){
+        $from = date('Y-m-d', strtotime($_POST['from']));
+        $to =   date('Y-m-d', strtotime($_POST['to']));;
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $usercount = User:: checkUserCredentials($email, $password);
-
-            if($usercount > 0){
-                $info = User::userinfo($email);
-                $userid = $info->uid;
-                $_SESSION['userid'] = $userid;
-                header('Location:' . URLROOT . '/pages/dashboard');
-            }else{
-                $message = ['message'=>'Incorrect email or password'];
-                $this->view('pages/login', $message);
-                exit;
-            }
-        }else{
-            $this->view('pages/login');
-            exit;
-        }
-
+        $paymentsearchdata = Payments::listAllPaymentstbyRange($from, $to);
+        $totalsales = Payments::totalsales($from, $to);
+        $data = ['paymentsearchdata'=>$paymentsearchdata, 'totalsales'=>$totalsales];
+        $this->view('pages/invoices', $data);
     }
-
+    
     public function categories(){
 
         $category = $_POST['category'];

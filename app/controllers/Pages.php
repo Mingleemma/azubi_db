@@ -94,6 +94,7 @@ class Pages extends Controller{
     public function index(){
         $paymentstoday = Payments::listAllPaymentstoday();
         $data = ['paymentstoday'=>$paymentstoday];
+        // print_r($data);
         $this->view('pages/invoices', $data);
     }
 

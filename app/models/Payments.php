@@ -32,7 +32,8 @@ class Payments extends tableDataObject
     public static function listAllPaymentstoday(){
         global $connectedDb;
         $today = date('Y-m-d');
-        $query = "select * from payments where paydate = '$today' ";
+        // $query = "select * from payments where paydate = '$today' ";
+        $query = "select * from payments";
         $connectedDb->prepare($query);
         return $connectedDb->resultSet();
     }

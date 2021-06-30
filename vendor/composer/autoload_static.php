@@ -20,8 +20,8 @@ class ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4
     public static $prefixDirsPsr4 = array (
         'Mike42\\' => 
         array (
-            0 => __DIR__ . '/..' . '/mike42/gfx-php/src/Mike42',
-            1 => __DIR__ . '/..' . '/mike42/escpos-php/src/Mike42',
+            0 => __DIR__ . '/..' . '/mike42/escpos-php/src/Mike42',
+            1 => __DIR__ . '/..' . '/mike42/gfx-php/src/Mike42',
         ),
         'Firebase\\JWT\\' => 
         array (
@@ -39,12 +39,17 @@ class ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite058d18d3b394bdd3e0b8f42b4e7cdc4::$classMap;
 
         }, null, ClassLoader::class);
     }
